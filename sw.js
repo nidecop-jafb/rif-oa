@@ -1,7 +1,7 @@
 /* sw.js — service worker do rif-oa. Gerado por _site/gerar_site_rif.py — nao editar a mao.
  * Rede primeiro, cache so para o aparelho sem internet (molde lme-oa).
  * O nome do cache muda a cada geracao: o activate apaga os anteriores. */
-var CACHE = 'rif-oa-20260925-161430';
+var CACHE = 'rif-oa-20260925-164714';
 
 self.addEventListener('install', function (e) {
   self.skipWaiting();
