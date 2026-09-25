@@ -157,6 +157,31 @@ a.oa .tag { display: block; color: var(--azul-claro); font-size: .9rem; }
 .footer-marcas { display: flex; gap: 14px; align-items: center; justify-content: center; margin: 0 auto 10px; }
 .footer-marcas svg { width: 30px; height: 30px; display: block; }
 .footer-marcas a { display: flex; }
+.footer p { max-width: none; text-align: center; }
+.footer-links { margin-bottom: 6px; font-size: .85rem; }
+.footer-selo { text-align: center; margin-top: 8px; color: #9a9a9a; }
+
+/* sugestoes e agradecimentos */
+.form-sug { border: 1px solid #444; background: #151619; padding: 16px; margin: 10px 0 18px; }
+.form-sug label { display: block; font-size: .85rem; color: #aaa; margin: 12px 0 4px; }
+.form-sug select, .form-sug textarea { width: 100%; background: #0d0d0d; color: #e8e8e8; border: 1px solid #555;
+                                       padding: 8px; font-family: inherit; font-size: .95rem; }
+.form-sug textarea { min-height: 120px; resize: vertical; }
+.form-sug button { background: #1a1b1f; color: #e8e8e8; border: 1px solid #555; padding: 9px 14px; font-size: .9rem;
+                   cursor: pointer; margin: 8px 8px 0 0; }
+.form-sug button.forte { border-color: var(--azul); color: var(--azul-claro); }
+.form-sug button:disabled { opacity: .45; cursor: default; }
+.form-sug .chk { display: flex; gap: 8px; align-items: flex-start; color: #ddd; font-size: .9rem; }
+.form-sug .chk input { width: 20px; height: 20px; flex: 0 0 20px; accent-color: var(--verde); margin-top: 3px; }
+.form-sug audio { width: 100%; margin-top: 8px; }
+.form-sug .hp { position: absolute; left: -9999px; top: -9999px; }
+.msg-erro { border-left: 4px solid #c65b5b; background: rgba(198,91,91,.12); padding: 8px 12px; margin: 10px 0; }
+.msg-ok { border-left: 4px solid var(--verde); background: rgba(62,142,90,.14); padding: 10px 14px; margin: 10px 0; }
+.msg-erro[hidden], .msg-ok[hidden] { display: none; }
+.agr { border: 1px solid #444; border-left: 4px solid var(--verde); padding: 12px 14px; margin-bottom: 12px; }
+.agr .agr-cab { font-size: .8rem; color: #9a9a9a; margin-bottom: 4px; }
+.agr .agr-sug { color: #ddd; }
+.agr .agr-res { color: var(--verde-claro); margin-top: 6px; }
 
 @media (max-width: 800px) {
   .wrap { padding-left: 46px; }          /* as abas fixas nao cobrem o texto */
