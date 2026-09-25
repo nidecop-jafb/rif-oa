@@ -119,6 +119,35 @@ a.oa .tag { display: block; color: var(--azul-claro); font-size: .9rem; }
 .aba-painel .passos-2 { grid-template-columns: 1fr; }
 .aba-painel ol.num { margin-left: 1.4em; }
 
+/* agenda da semana (so no aparelho) */
+.ag-topo { border: 1px solid #444; background: #151619; padding: 14px; display: flex; flex-wrap: wrap; gap: 12px;
+           align-items: flex-end; margin-bottom: 14px; }
+.ag-topo label, .ag-nova label { display: flex; flex-direction: column; gap: 4px; font-size: .8rem; color: #aaa; }
+.ag select, .ag input { background: #0d0d0d; color: #e8e8e8; border: 1px solid #555; padding: 7px;
+                        font-family: inherit; font-size: .9rem; max-width: 100%; }
+.ag button { background: #1a1b1f; color: #e8e8e8; border: 1px solid #555; padding: 8px 12px; font-size: .85rem;
+             cursor: pointer; }
+.ag button:hover { border-color: var(--azul); }
+.ag button:disabled { opacity: .45; cursor: default; }
+.ag button.forte { border-color: var(--azul); color: var(--azul-claro); }
+.ag-conta { font-size: 1.05rem; color: var(--verde-claro); font-weight: bold; margin: 6px 0; }
+.ag-aviso { border-left: 4px solid #d9a441; background: rgba(217,164,65,.12); padding: 8px 12px; margin: 0 0 14px; }
+.ag-erro { border-left: 4px solid #c65b5b; background: rgba(198,91,91,.12); padding: 8px 12px; margin: 0 0 14px; }
+.ag-aviso[hidden], .ag-erro[hidden] { display: none; }
+.ag-dia { border: 1px solid #444; margin-bottom: 10px; }
+.ag-dia > p { padding: 8px 14px; color: #fff; font-weight: bold; margin: 0; }
+.ag-dia.vazio > p { color: #777; font-weight: normal; }
+.ag-ses { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; padding: 10px 14px; border-top: 1px solid #2a2a2a; }
+.ag-ses.feita { background: rgba(62,142,90,.14); }
+.ag-ses .hora { color: var(--azul-claro); font-weight: bold; }
+.ag-ses label.chk { display: flex; gap: 6px; align-items: center; cursor: pointer; }
+.ag-ses input[type=checkbox] { width: 20px; height: 20px; accent-color: var(--verde); }
+.ag-ses .erro-passo { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; font-size: .85rem; color: #aaa; }
+.ag-ses .erro-passo input { width: 14em; }
+.ag-nova { border: 1px dashed #555; padding: 14px; display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-end;
+           margin: 14px 0 20px; }
+.ag-hist li { font-size: .88rem; color: #bbb; margin-bottom: 4px; }
+
 /* web x pen drive: o que so faz sentido num dos dois */
 .so-pd { display: none; }
 .offline .so-web { display: none; }
@@ -142,4 +171,5 @@ a.oa .tag { display: block; color: var(--azul-claro); font-size: .9rem; }
   details.trilha > summary { font-size: 1.1rem; }
   .filtros input { min-width: 0; width: 100%; }
   .filtros label { flex: 1 1 130px; }
+  .ag-ses .erro-passo, .ag-ses .erro-passo select, .ag-ses .erro-passo input { width: 100%; }
 }
