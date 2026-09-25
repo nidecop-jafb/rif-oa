@@ -182,6 +182,11 @@ a.oa .tag { display: block; color: var(--azul-claro); font-size: .9rem; }
 .agr .agr-cab { font-size: .8rem; color: #9a9a9a; margin-bottom: 4px; }
 .agr .agr-sug { color: #ddd; }
 .agr .agr-res { color: var(--verde-claro); margin-top: 6px; }
+.alt { display: inline-flex; align-items: center; gap: 4px; margin-right: 14px; font-size: 1rem; cursor: pointer; }
+.alt input { width: 20px; height: 20px; accent-color: var(--azul); }
+.q-res label { display: block; font-size: .88rem; color: #bbb; }
+.q-res select { margin-top: 4px; max-width: 100%; }
+#simOpiniao label { margin-top: 10px; }
 
 @media (max-width: 800px) {
   .wrap { padding-left: 46px; }          /* as abas fixas nao cobrem o texto */
