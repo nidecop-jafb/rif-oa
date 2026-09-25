@@ -1,0 +1,21 @@
+{
+  "name": "Rumo ao IFMG · preparação para o processo seletivo",
+  "short_name": "Rumo ao IFMG",
+  "start_url": "/rif-oa/",
+  "scope": "/rif-oa/",
+  "display": "standalone",
+  "background_color": "#0d0d0d",
+  "theme_color": "#0d0d0d",
+  "icons": [
+    {
+      "src": "/rif-oa/_icones/app-site-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/rif-oa/_icones/app-site-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
