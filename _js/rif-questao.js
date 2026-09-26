@@ -25,7 +25,7 @@ function rifCard(it, extra) {
     + '<button type="button" aria-expanded="false" onclick="rifAbrir(this, \'gab-' + id + '\')">Ver a resposta</button>'
     + '<button type="button" aria-expanded="false" onclick="rifAbrir(this, \'det-' + id + '\')">Resolução em 5 passos</button>'
     + '<button type="button" aria-expanded="false" onclick="rifAbrir(this, \'con-' + id + '\')">Resolução condensada</button>'
-    + '<a class="so-web" href="' + rifEsc(it.fonte.url_prova) + '" target="_blank" rel="noopener">Prova oficial (PDF)</a>'
+    + '<a class="so-web" href="' + rifEsc(it.fonte.url_prova) + '" target="_blank" rel="noopener">Abrir o PDF da prova (' + rifEsc(it.fonte.paginas) + ' páginas)</a>'
     + '</div>'
     + '<div class="q-res" id="gab-' + id + '" hidden><p class="gab">Resposta: alternativa ' + rifEsc(it.gabarito) + '</p></div>'
     + '<div class="q-res" id="det-' + id + '" hidden><ol>' + lis + '</ol></div>'
