@@ -28,6 +28,10 @@ ol.num { margin: 0 0 14px 1.6em; }
 ol.num li { margin-bottom: 6px; }
 blockquote { border-left: 4px solid var(--azul); padding: 8px 14px; margin: 0 0 14px; color: #ddd;
              background: rgba(74,127,193,.10); }
+h2 + ul, h2 + ul + p { list-style: disc; margin: 0 0 14px 1.4em; }
+table { width: 100%; border-collapse: collapse; margin: 0 0 20px; font-size: .88rem; }
+th, td { border: 1px solid #444; padding: 8px 10px; text-align: left; vertical-align: top; }
+th { color: var(--azul-claro); background: rgba(74,127,193,.10); }
 
 /* trilhas: atalhos + sanfona (molde lme-oa) */
 .trilha-nav { position: sticky; top: 0; z-index: 10; display: flex; flex-wrap: wrap; gap: 6px; padding: 12px 0;
