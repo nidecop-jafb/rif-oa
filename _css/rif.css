@@ -107,6 +107,7 @@ a.oa .tag { display: block; color: var(--azul-claro); font-size: .9rem; }
               color: #aaa; font-size: .7rem; padding: 8px 10px; cursor: pointer; writing-mode: vertical-rl;
               text-orientation: mixed; letter-spacing: 1px; text-transform: uppercase; }
 .aba-toggle:hover { color: var(--azul-claro); }
+.aba-toggle.aqui { color: #fff; background: var(--azul-esc); border-color: var(--azul-esc); }
 .aba-toggle.ativa { color: #0d0d0d; background: var(--azul); border-color: var(--azul); font-weight: 700; }
 .aba-painel { position: fixed; top: 0; left: 0; z-index: 997; width: 400px; max-width: 88vw; height: 100vh;
               overflow-y: auto; background: #1a1b1f; border-right: 1px solid #444; padding: 24px 22px 24px 42px;

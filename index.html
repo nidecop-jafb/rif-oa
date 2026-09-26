@@ -13,7 +13,20 @@
 <title>Rumo ao IFMG · preparação para o processo seletivo do IFMG Ouro Preto</title>
 </head>
 <body data-pagina="inicio">
-<button class="aba-toggle" id="abaMetodoT">Método</button>
+<button class="aba-toggle" id="abaSiteT">Site</button>
+<aside class="aba-painel" id="abaSite">
+  <h3>Site</h3>
+  <div class="so-web">
+  <p>Endereço: <strong>nidecop-jafb.github.io/rif-oa</strong> — abre direto, sem senha, sem cadastro e sem nome.</p>
+  <p>Funciona no celular e no computador. Para ter o atalho com ícone ou levar no pen drive, veja a aba
+  <strong>Instalar</strong>.</p>
+  </div>
+  <div class="so-pd">
+  <p>Você está usando a <strong>versão sem internet</strong>, do pen drive.</p>
+  <p>Na web, o endereço é <strong>nidecop-jafb.github.io/rif-oa</strong> — abre direto, sem senha, sem cadastro e sem nome.</p>
+  </div>
+</aside>
+<button class="aba-toggle aqui" id="abaMetodoT" aria-current="page">Método</button>
 <aside class="aba-painel" id="abaMetodo">
   <h3>Método de estudo</h3>
   <p>Estude em <strong>sessões de 30 minutos</strong>. Em cada sessão:</p>
@@ -38,15 +51,6 @@
   <a class="aba-btn" href="agenda/index.html">Abrir a minha agenda</a>
   <p class="aba-nota">A agenda fica guardada só neste aparelho. Ninguém mais vê.</p>
 </aside>
-<button class="aba-toggle" id="abaQuestoesT">Questões</button>
-<aside class="aba-painel" id="abaQuestoes">
-  <h3>Questões do IFMG</h3>
-  <p>As provas do processo seletivo do IFMG de 2023 a 2026, questão por questão. Cada uma tem a resposta, a
-  resolução em 5 passos e a resolução condensada.</p>
-  <p>Filtre por ano, por área ou pelo tipo de pensamento, ou procure uma palavra.</p>
-  <a class="aba-btn" href="questoes/index.html">Abrir as 166 questões</a>
-  <p class="aba-nota">As questões anuladas pela banca ficaram de fora.</p>
-</aside>
 <button class="aba-toggle" id="abaInstalarT">Instalar</button>
 <aside class="aba-painel" id="abaInstalar">
   <h3>Instalar e levar no pen drive</h3>
@@ -60,9 +64,19 @@
   <p class="aba-nota">Para pegar a versão mais nova, baixe o pacote de novo no site, quando tiver internet.</p>
   </div>
 </aside>
-<button class="aba-toggle" id="abaSobreT">Sobre</button>
-<aside class="aba-painel" id="abaSobre">
-  <h3>Sobre o projeto</h3>
+<button class="aba-toggle" id="abaTreinoT">Treino</button>
+<aside class="aba-painel" id="abaTreino">
+  <h3>Treino</h3>
+  <p>Terminou a trilha da semana? O treino é o passo seguinte: as provas do processo seletivo do IFMG de 2023 a
+  2026, questão por questão, para praticar os 5 passos além das trilhas.</p>
+  <p>Cada questão tem a resposta, a resolução em 5 passos e a resolução condensada. Filtre por ano, por área ou
+  pelo tipo de pensamento, ou procure uma palavra. Comece pelo passo em que você mais erra.</p>
+  <a class="aba-btn" href="questoes/index.html">Treinar com as 166 questões</a>
+  <p class="aba-nota">As questões anuladas pela banca ficaram de fora.</p>
+</aside>
+<button class="aba-toggle" id="abaDocumentosT">Documentos</button>
+<aside class="aba-painel" id="abaDocumentos">
+  <h3>Documentos do projeto</h3>
   <p><strong>Rumo ao IFMG (RIF)</strong> é um projeto de ensino do IFMG <em>Campus</em> Ouro Preto (art. 3.º, III, da
   IN PROEN/IFMG n.º 2/2019: metodologias e materiais pedagógicos inovadores).</p>
   <p>Público: estudantes do 9.º ano das escolas públicas (municipais e estaduais) de Ouro Preto que vão fazer o processo seletivo dos cursos
@@ -70,6 +84,7 @@
   <p>Os 5 passos são a versão curta da <strong>Resolução Científica do Problema (RCP)</strong>, o protocolo de 8 etapas
   usado na disciplina Física Conceitual 1 do curso técnico em Mineração: as mesmas 8 etapas, agrupadas em 5 e escritas
   na linguagem do 9.º ano. Quem entra no IFMG reencontra o mesmo caminho na 1.ª série.</p>
+  <a class="aba-btn" href="documentos/index.html">Abrir Ementa e Plano de Ensino</a>
   <div class="aba-sec">Pesquisa</div>
   <p>O IFMG <em>Campus</em> Ouro Preto oferta <strong>gratuitamente</strong> o curso de <a href="https://ouropreto.ifmg.edu.br/ouropreto/cursos/graduacao/licenciatura-em-fisica" target="_blank"
   rel="noopener"><strong>Licenciatura em Física</strong></a>, que forma professores. Nele, o Rumo ao IFMG poderá ser
@@ -88,9 +103,25 @@
   <p>O objetivo principal é um só: <strong>melhorar a qualidade do aprendizado dos estudantes da nossa região</strong>.</p>
   <p>Se você enviar uma sugestão, ela chega só à equipe do projeto, sem o seu nome.</p>
   <a class="aba-btn" href="sugestoes/index.html">Enviar uma sugestão</a>
-  <a class="aba-btn" href="agradecimentos/index.html">Ver os agradecimentos e o que já mudou</a>
-  <div class="aba-sec">Equipe</div>
-  <p class="aba-cargo">Coordenador</p>
+</aside>
+<button class="aba-toggle" id="abaCreditosT">Créditos</button>
+<aside class="aba-painel" id="abaCreditos">
+  <h3>Créditos</h3>
+  <p class="aba-cargo">Reitor</p>
+  <p class="aba-nome">Rafael Bastos Teixeira</p>
+  <p class="aba-cargo">Pró-Reitor de Ensino</p>
+  <p class="aba-nome">Mário Luiz Viana Alvarenga</p>
+  <p class="aba-cargo">Diretor-Geral do Campus Ouro Preto</p>
+  <p class="aba-nome">Reginato Fernandes dos Santos</p>
+  <p class="aba-cargo">Diretora de Ensino</p>
+  <p class="aba-nome">Talita Valadares</p>
+  <p class="aba-cargo">Coordenador da Área de Física</p>
+  <p class="aba-nome">Lázaro Souza Lima</p>
+  <p class="aba-cargo">Presidente do Colegiado do Curso de Licenciatura em Física</p>
+  <p class="aba-nome">Daniel da Mota Neri</p>
+  <p class="aba-cargo">Vice-Presidente do Colegiado do Curso de Licenciatura em Física</p>
+  <p class="aba-nome">Daniel Bretas Roa</p>
+  <p class="aba-cargo">Coordenador do projeto</p>
   <p class="aba-nome">Julio Azevedo — Professor do Ensino Técnico e Tecnológico do IFMG, na Área de Física do <em>campus</em>
   Ouro Preto desde 1985. Criador do Núcleo de Inovação e Desenvolvimento de Experimentos Científicos (NIDEC) em 2016.</p>
   <p class="aba-cargo">Colaborador</p>
@@ -98,16 +129,12 @@
   dos Materiais.</p>
   <p class="aba-cargo">Monitoria</p>
   <p class="aba-nome">Dois estudantes voluntários da 2.ª ou da 3.ª série dos cursos técnicos integrados do <em>campus</em>.</p>
-  <div class="aba-sec">Agradecimentos</div>
-  <p>Às escolas públicas de Ouro Preto que abrem as portas para o piloto, e aos ex-alunos e ex-alunas do IFMG que
+  <p class="aba-cargo">Agradecimentos</p>
+  <p class="aba-nome">Às escolas públicas de Ouro Preto que abrem as portas para o piloto, e aos ex-alunos e ex-alunas do IFMG que
   pedem apoio na caminhada de familiares rumo ao IFMG <em>Campus</em> Ouro Preto.</p>
-</aside>
-<button class="aba-toggle" id="abaDocumentosT">Documentos</button>
-<aside class="aba-painel" id="abaDocumentos">
-  <h3>Documentos do projeto</h3>
-  <p>A Ementa e o Plano de Ensino do Rumo ao IFMG: objetivos, metodologia, cronograma e os
-  indicadores usados para medir o piloto.</p>
-  <a class="aba-btn" href="documentos/index.html">Abrir Ementa e Plano de Ensino</a>
+  <a class="aba-btn" href="agradecimentos/index.html">Ver os agradecimentos e o que já mudou</a>
+  <p class="aba-cargo">Edição</p>
+  <p class="aba-nome">1.ª edição — Ouro Preto, 2026</p>
 </aside>
 
 <div class="wrap">
@@ -121,8 +148,8 @@
       <p>Você vai treinar um jeito de estudar em <strong>sessões de 30 minutos</strong> e um caminho de
       <strong>5 passos</strong> para resolver qualquer questão da prova, com as questões de verdade das provas de
       2023 a 2026.</p>
-      <p>Nas <strong>abas da lateral esquerda</strong> estão o método, a sua agenda de estudo, as questões, como instalar o site ou levá-lo
-      no pen drive, e quem faz o projeto.</p>
+      <p>Nas <strong>abas da lateral esquerda</strong> estão o site, o método, a sua agenda de estudo, como instalar o
+      site ou levá-lo no pen drive, o treino com as questões das provas, os documentos do projeto e os créditos.</p>
       <p>Comece pela T0A e siga <strong>uma trilha por semana</strong>, na ordem.</p>
       <blockquote>Ninguém nasce sabendo resolver questão de prova: a gente aprende um passo de cada vez. São
       <strong>30 minutos, 3 vezes por semana</strong>, com foco. Quando errar, anote em que passo foi: é esse passo
