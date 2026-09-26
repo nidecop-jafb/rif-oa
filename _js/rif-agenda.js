@@ -62,7 +62,7 @@
     }).join('');
     document.getElementById('agHist').innerHTML = est.historico.slice(-12).reverse().map(function (h) {
       return '<li>' + esc(h.trilha) + ' · ' + h.feitas + ' de ' + h.total + ' sessões feitas'
-        + (h.erros ? ' · passo em que mais errei: ' + esc(h.erros) : '') + '</li>';
+        + (h.erros ? ' · passo com mais erros: ' + esc(h.erros) : '') + '</li>';
     }).join('') || '<li>Ainda nenhuma semana fechada.</li>';
     document.getElementById('agIcs').disabled = !n;
     /* Passo a treinar: o mais errado nas questoes registradas (rif-questao.js, mesmo aparelho). */
@@ -70,7 +70,7 @@
     document.getElementById('agTreino').innerHTML = d
       ? 'Passo a treinar nesta semana: <b>Passo ' + d[0] + ' · ' + esc(RIF_PASSOS_CURTO[d[0] - 1]) + '</b> (errei em '
         + d[1] + (d[1] === 1 ? ' questão' : ' questões') + '). <a href="../t0a/index.html#passos">Rever os 5 passos</a>'
-      : 'Quando eu marcar, nas questões, o passo em que errei, aqui aparece o passo a treinar nesta semana.';
+      : 'Quando você marcar, nas questões, o passo em que errou, aqui aparece o passo a treinar nesta semana.';
   }
 
   function mudou(e) {
@@ -117,7 +117,7 @@
               'DTEND:' + dia2 + 'T' + f.replace(':', '') + '00',
               'RRULE:FREQ=WEEKLY;BYDAY=' + BY[s.dia],
               'SUMMARY:Rumo ao IFMG · sessão de estudo (30 min)',
-              'DESCRIPTION:Leio o passo\\, resolvo pelos 5 passos\\, confiro e anoto em que passo errei.',
+              'DESCRIPTION:Leia o passo do dia\\, resolva pelos 5 passos\\, confira e anote em que passo errou.',
               'BEGIN:VALARM', 'ACTION:DISPLAY', 'DESCRIPTION:Sessão do Rumo ao IFMG', 'TRIGGER:-PT10M', 'END:VALARM',
               'END:VEVENT'].join('\r\n');
     });
