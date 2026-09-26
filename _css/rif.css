@@ -86,6 +86,10 @@ a.oa .tag { display: block; color: var(--azul-claro); font-size: .9rem; }
 .q-res li b { display: block; color: var(--azul-claro); }
 .q.qual .q-res li b { color: var(--verde-claro); }
 .q-res .cond { border-left: 4px solid #666; padding: 6px 12px; color: #ddd; }
+.sessao-t { font-size: 1rem; color: var(--azul-claro); text-transform: uppercase; letter-spacing: .05em;
+            margin: 26px 0 10px; }
+.passo1-ex { border: 1px solid var(--azul); padding: 10px 14px; margin-bottom: 14px; }
+.passo1-ex b { color: var(--azul-claro); }
 
 /* filtros da aba Questoes */
 .filtros { border: 1px solid #444; background: #151619; padding: 14px; display: flex; flex-wrap: wrap; gap: 12px;
