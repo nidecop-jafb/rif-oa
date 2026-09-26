@@ -236,6 +236,12 @@ a.oa .tag { display: block; color: var(--azul-claro); font-size: .9rem; }
   .filtros input { min-width: 0; width: 100%; }
   .filtros label { flex: 1 1 130px; }
   .ag-ses .erro-passo, .ag-ses .erro-passo select, .ag-ses .erro-passo input { width: 100%; }
+  table.tb-cel, table.tb-cel tr, table.tb-cel th, table.tb-cel td { display: block; }
+  table.tb-cel tr:first-child { display: none; }        /* cabecalho normal some; o rotulo vem do data-label */
+  table.tb-cel tr { border: 1px solid var(--b-444); margin: 0 0 12px; padding: 10px 12px; }
+  table.tb-cel td { border: none; padding: 4px 0 4px; }
+  table.tb-cel td::before { content: attr(data-label); display: block; font-size: .78rem; font-weight: bold;
+    color: var(--azul-claro); margin-bottom: 2px; }
 }
 /* botao Tema (sol/lua), no canto do topo de toda pagina */
 .tema-btn { float: right; margin: -6px 0 8px 12px; width: 38px; height: 38px; display: flex; align-items: center;
