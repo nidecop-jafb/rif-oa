@@ -196,6 +196,30 @@ a.oa .tag { display: block; color: var(--azul-claro); font-size: .9rem; }
 .q-res select { margin-top: 4px; max-width: 100%; }
 #simOpiniao label { margin-top: 10px; }
 
+/* registro da resolucao (so no aparelho) */
+.q-alts { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 4px; padding: 12px 14px 0; }
+.q-alts > span { font-size: .85rem; color: #aaa; margin-right: 10px; }
+.q-acoes button:disabled { cursor: default; opacity: .8; }
+.q > .msg-erro { margin: 0 14px 12px; }
+.reg { border: 1px solid #444; background: #151619; padding: 10px 12px; margin: 10px 0; }
+.reg label.chk { display: flex; gap: 8px; align-items: flex-start; font-size: .92rem; color: #ddd; margin: 4px 0; cursor: pointer; }
+.reg input[type=radio], .reg input[type=checkbox] { width: 20px; height: 20px; flex: 0 0 20px; margin-top: 4px;
+                                                    accent-color: var(--verde); }
+.reg-passos { border-top: 1px solid #333; margin-top: 8px; padding-top: 6px; }
+.reg-passos[hidden] { display: none; }
+.reg > .reg-passos:first-child { border-top: 0; margin-top: 0; padding-top: 0; }
+.reg-passos p { font-size: .85rem; color: #aaa; margin: 0 0 4px; }
+.reg input[type=text] { width: 100%; margin-top: 6px; background: #0d0d0d; color: #e8e8e8; border: 1px solid #555;
+                        padding: 7px; font-family: inherit; font-size: .9rem; }
+.reg-nota { font-size: .8rem; color: #888; }
+.reg-apagar { background: none; border: none; color: var(--azul-claro); text-decoration: underline; cursor: pointer;
+              font-size: .8rem; padding: 0; }
+.reg-faixa { border: 1px solid var(--verde); background: rgba(62,142,90,.12); padding: 10px 14px; margin: 0 0 20px;
+             font-size: .92rem; }
+.reg-faixa b { color: var(--verde-claro); }
+.ag-treino { border-left: 4px solid var(--verde); background: rgba(62,142,90,.12); padding: 8px 12px; margin: 0 0 14px; }
+.ag-treino b { color: var(--verde-claro); }
+
 @media (max-width: 800px) {
   .wrap { padding-left: 46px; }          /* as abas fixas nao cobrem o texto */
   .aba-toggle { font-size: .6rem; padding: 6px 6px; }

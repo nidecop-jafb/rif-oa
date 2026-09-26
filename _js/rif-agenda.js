@@ -65,6 +65,12 @@
         + (h.erros ? ' · passo em que mais errei: ' + esc(h.erros) : '') + '</li>';
     }).join('') || '<li>Ainda nenhuma semana fechada.</li>';
     document.getElementById('agIcs').disabled = !n;
+    /* Passo a treinar: o mais errado nas questoes registradas (rif-questao.js, mesmo aparelho). */
+    var d = window.rifPassoDificil ? rifPassoDificil() : null;
+    document.getElementById('agTreino').innerHTML = d
+      ? 'Passo a treinar nesta semana: <b>Passo ' + d[0] + ' · ' + esc(RIF_PASSOS_CURTO[d[0] - 1]) + '</b> (errei em '
+        + d[1] + (d[1] === 1 ? ' questão' : ' questões') + '). <a href="../t0a/index.html#passos">Rever os 5 passos</a>'
+      : 'Quando eu marcar, nas questões, o passo em que errei, aqui aparece o passo a treinar nesta semana.';
   }
 
   function mudou(e) {

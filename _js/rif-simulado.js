@@ -25,15 +25,13 @@
       var m = marcada(id), ok = m === S.gabarito[id], c = $('c-' + id);
       if (ok) { certas++; }
       c.hidden = false;
-      c.innerHTML = ok ? '<p class="gab">Acertou (' + esc(m) + ').</p>'
-        : '<p class="gab">Resposta certa: ' + esc(S.gabarito[id]) + (m ? ' · você marcou ' + esc(m) : ' · sem resposta') + '</p>' +
-          '<label>Em que passo eu errei? <select data-id="' + id + '" class="simPasso"><option value="">não sei</option>' +
-          '<option value="1">1 · O que a questão quer?</option><option value="2">2 · O que eu tenho?</option>' +
-          '<option value="3">3 · O desenho ou separar as afirmações</option><option value="4">4 · Minha solução ou julgar uma por uma</option>' +
-          '<option value="5">5 · Confiro e respondo</option></select></label>';
+      /* Mesmas opcoes do cartao de questao (rif-questao.js), sem o campo livre: ele nao sai do aparelho. */
+      c.innerHTML = (ok ? '<p class="gab">Acertou (' + esc(m) + ').</p>'
+        : '<p class="gab">Resposta certa: ' + esc(S.gabarito[id]) + (m ? ' · você marcou ' + esc(m) : ' · sem resposta') + '</p>')
+        + rifRegHtml(id, null, ok, RIF_PASSOS_CURTO, false, false);
     });
-    document.querySelectorAll('#simLista input[type=radio]').forEach(function (r) { r.disabled = true; });
-    $('simResultado').textContent = 'Você acertou ' + certas + ' de ' + forma().length + '. Marque em que passo errou e envie.';
+    document.querySelectorAll('#simLista .q-acoes input[type=radio]').forEach(function (r) { r.disabled = true; });
+    $('simResultado').textContent = 'Você acertou ' + certas + ' de ' + forma().length + '. Em cada questão, marque se acertou os 5 passos ou em que passo errou, e envie.';
     corrigido = true; $('simEnviar').disabled = false; $('simCorrigir').disabled = true; $('simMomento').disabled = true;
   }
   function enviar() {
@@ -41,7 +39,9 @@
     if (!URL_EXEC || location.protocol.indexOf('http') !== 0) { $('simErro').textContent = 'Para enviar, abra o site com internet.'; $('simErro').hidden = false; return; }
     var dados = { tipo: 'SIMULADO_RIF', momento: $('simMomento').value, escola: $('simEscola').value, respostas: {}, passos: {}, opiniao: {}, hp: $('simHp').value };
     forma().forEach(function (id) { var m = marcada(id); if (m) { dados.respostas[id] = m; } });
-    document.querySelectorAll('.simPasso').forEach(function (s) { if (s.value) { dados.passos[s.getAttribute('data-id')] = s.value; } });
+    document.querySelectorAll('#simLista .reg').forEach(function (el) {
+      var v = rifRegValor(el); if (v) { dados.passos[el.getAttribute('data-reg')] = v; }
+    });
     if (dados.momento === 'final') {
       document.querySelectorAll('.simOp').forEach(function (s) { if (s.value) { dados.opiniao[s.name] = s.value; } });
     }
