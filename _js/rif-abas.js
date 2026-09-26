@@ -23,3 +23,21 @@
   empilhar();
   window.addEventListener('resize', empilhar);
 })();
+
+/* Botao Tema (sol/lua): o tema inicial vem do <head> (escolha guardada ou o do aparelho). */
+(function () {
+  var b = document.getElementById('temaBtn'), h = document.documentElement;
+  if (!b) { return; }
+  function rotulo() {
+    var r = h.getAttribute('data-tema') === 'claro' ? 'Mudar para o modo escuro' : 'Mudar para o modo claro';
+    b.setAttribute('aria-label', r); b.title = r;
+  }
+  b.addEventListener('click', function (e) {
+    e.stopPropagation();
+    var novo = h.getAttribute('data-tema') === 'claro' ? 'escuro' : 'claro';
+    h.setAttribute('data-tema', novo);
+    try { localStorage.setItem('rif-tema', novo); } catch (err) { /* sem localStorage: vale ate fechar a pagina */ }
+    rotulo();
+  });
+  rotulo();
+})();
