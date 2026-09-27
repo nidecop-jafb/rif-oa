@@ -105,12 +105,15 @@ function rifCorpo(it, alt) {
       + '" alt="' + rifEsc(alt || q.alt) + '"></div>';
   }
   var h = '', lista = '', marcas = q.marcas || {};
-  function marcado(t, ms) {        /* destaque da prova: sublinhado (u) ou negrito (b) */
+  /* marcas da prova: sublinhado (u), negrito (b), expoente (s), indice (i), quebra de verso (n) */
+  var TAG = { u: 'u', b: 'strong', s: 'sup', i: 'sub' };
+  function marcado(t, ms) {
     if (!ms) { return rifEsc(t); }
     var out = '', ult = 0;
     ms.slice().sort(function (a, b) { return a[0] - b[0]; }).forEach(function (m) {
       if (m[0] < ult) { return; }
-      var tag = m[2] === 'b' ? 'strong' : 'u';
+      if (m[2] === 'n') { out += rifEsc(t.slice(ult, m[0]).replace(/ $/, '')) + '<br>'; ult = m[0]; return; }
+      var tag = TAG[m[2]] || 'u';
       out += rifEsc(t.slice(ult, m[0])) + '<' + tag + '>' + rifEsc(t.slice(m[0], m[1])) + '</' + tag + '>';
       ult = m[1];
     });
@@ -127,8 +130,8 @@ function rifCorpo(it, alt) {
     }
   });
   if (lista) { h += '<ul class="q-lista">' + lista + '</ul>'; }
-  h += '<ul class="q-lista q-alt-lista">' + q.alts.map(function (a) {
-    return '<li>' + rifEsc(a[0]) + ') ' + rifEsc(a[1]) + '</li>';
+  h += '<ul class="q-lista q-alt-lista">' + q.alts.map(function (a, i) {
+    return '<li>' + rifEsc(a[0]) + ') ' + marcado(a[1], marcas['a' + i]) + '</li>';
   }).join('') + '</ul>';
   return '<div class="q-txt">' + h + '</div>';
 }
