@@ -198,6 +198,11 @@ a.oa .tag { display: block; color: var(--azul-claro); font-size: .9rem; }
 .form-sug .chk { display: flex; gap: 8px; align-items: flex-start; color: var(--t-ddd); font-size: .9rem; }
 .form-sug .chk input { width: 20px; height: 20px; flex: 0 0 20px; accent-color: var(--verde); margin-top: 3px; }
 .form-sug audio { width: 100%; margin-top: 8px; }
+.faixa { border: 1px solid var(--b-444); padding: 14px 16px; margin: 12px 0; }
+.faixa p { margin: 0 0 8px; }
+.faixa audio { width: 100%; }
+.faixa .baixar { font-size: .9rem; margin: 6px 0 0; }
+.md-roteiro h3 { font-size: 1rem; margin: 26px 0 8px; }
 .form-sug .hp { position: absolute; left: -9999px; top: -9999px; }
 .msg-erro { border-left: 4px solid #c65b5b; background: rgba(198,91,91,.12); padding: 8px 12px; margin: 10px 0; }
 .msg-ok { border-left: 4px solid var(--verde); background: rgba(62,142,90,.14); padding: 10px 14px; margin: 10px 0; }
