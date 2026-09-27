@@ -77,6 +77,17 @@ a.oa .tag { display: block; color: var(--azul-claro); font-size: .9rem; }
 .q-base > summary { cursor: pointer; font-weight: bold; padding-bottom: 8px; }
 .q-base img { display: block; width: 100%; max-width: 640px; height: auto; margin: 0 auto 10px; }
 .q-fig img { display: block; width: 100%; max-width: 640px; height: auto; margin: 0 auto; }
+/* Questao em texto (PRE-site-rif-celular-leve-t0a): papel branco como a figura, letra sem serifa como a prova. */
+.q-txt { background: white; color: rgb(20, 20, 20); padding: 14px 16px; font-family: Calibri, Carlito, 'Segoe UI',
+         Roboto, Arial, sans-serif; font-size: 1.02rem; line-height: 1.5; overflow-wrap: anywhere; }
+.q-txt p { margin: 0 0 12px; }
+.q-txt .q-t { font-weight: bold; }
+.q-txt .q-fonte { font-size: .8rem; color: rgb(70, 70, 70); }
+.q-lista { list-style: none; margin: 0 0 12px; padding: 0; }
+.q-lista li { margin: 0 0 6px; padding-left: 1.4em; text-indent: -1.4em; }
+.q-alt-lista { margin: 4px 0 0; }
+.q-ilus { margin: 0 0 12px; text-align: center; }
+.q-ilus img { width: 100%; max-width: 260px; height: auto; }
 .q-acoes { display: flex; flex-wrap: wrap; gap: 8px; padding: 12px 14px; }
 .q-acoes button, .q-acoes a { background: var(--caixa); color: var(--texto); border: 1px solid var(--b-555); padding: 8px 12px;
                               font-size: .85rem; cursor: pointer; text-decoration: none; }

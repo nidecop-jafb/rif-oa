@@ -94,6 +94,29 @@ function rifTextoBase(id) {
   return '<details class="q-base" open><summary>' + rifEsc(b.rot) + ' (da prova)</summary>'
     + '<img loading="lazy" src="' + RIF_BASE + '_textos/' + rifEsc(b.img) + '" alt="' + rifEsc(b.rot) + ', recortados da prova do IFMG"></details>';
 }
+/* Corpo da questao: em texto (RIF_TEXTO, cortado do Banco no gerador) ou a figura da prova. */
+function rifCorpo(it, alt) {
+  var q = window.RIF_TEXTO && RIF_TEXTO[it.id], id = rifEsc(it.id);
+  if (!q) {
+    return '<div class="q-fig"><img loading="lazy" src="' + RIF_BASE + '_figuras/' + id + '.png" alt="' + rifEsc(alt) + '"></div>';
+  }
+  var h = '', lista = '';
+  q.blocos.forEach(function (b) {
+    if (b[0] === 'li') { lista += '<li>' + rifEsc(b[1]) + '</li>'; return; }
+    if (lista) { h += '<ul class="q-lista">' + lista + '</ul>'; lista = ''; }
+    if (b[0] === 'img') {
+      h += '<figure class="q-ilus"><img loading="lazy" src="' + RIF_BASE + '_ilustracoes/' + rifEsc(q.img)
+        + '" alt="' + rifEsc(q.img_alt) + '"></figure>';
+    } else {
+      h += '<p class="q-' + b[0] + '">' + rifEsc(b[1]) + '</p>';
+    }
+  });
+  if (lista) { h += '<ul class="q-lista">' + lista + '</ul>'; }
+  h += '<ul class="q-lista q-alt-lista">' + q.alts.map(function (a) {
+    return '<li>' + rifEsc(a[0]) + ') ' + rifEsc(a[1]) + '</li>';
+  }).join('') + '</ul>';
+  return '<div class="q-txt">' + h + '</div>';
+}
 function rifCard(it, extra) {
   var r = rifRamo(it), id = rifEsc(it.id), g = rifReg()[it.id], ver = !!(g && g.ver);
   var passos = RIF_PASSOS[r], det = (it.resolucao && it.resolucao.detalhada) || [];
@@ -122,7 +145,7 @@ function rifCard(it, extra) {
     + '<span class="selo ' + r + '">' + (r === 'quant' ? 'Quantitativo' : 'Qualitativo') + '</span>'
     + (extra || '') + '</div>'
     + rifTextoBase(it.id)
-    + '<div class="q-fig"><img loading="lazy" src="' + RIF_BASE + '_figuras/' + id + '.png" alt="' + rifEsc(alt) + '"></div>'
+    + rifCorpo(it, alt)
     + '<div class="q-alts"><span>Minha resposta:</span>' + alts + '</div>'
     + '<div class="q-acoes">'
     + '<button type="button"' + (ver ? ' aria-expanded="true" disabled' : '') + ' onclick="rifConferir(\'' + id + '\')">'

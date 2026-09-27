@@ -177,6 +177,55 @@
   <p>No Chrome ou no Edge, clique no ícone de instalar que aparece no fim da barra de endereço.</p>
   </section>
 
+  <section id="sem-internet">
+  <h2>Usar sem internet no celular</h2>
+  <p>Depois de instalar, abra o Rumo ao IFMG pelo ícone, ligue o Wi-Fi e toque no botão abaixo. O site inteiro
+  (<span id="tudoMb">cerca de 11 MB</span>) fica guardado no celular: trilhas, questões e resoluções abrem mesmo
+  sem internet.</p>
+  <p><button type="button" class="aba-btn" id="tudoBtn" onclick="rifBaixarTudo()">Baixar tudo para usar sem internet</button></p>
+  <p class="aba-nota" id="tudoMsg" aria-live="polite"></p>
+  <p class="aba-nota">Quando entrar trilha nova, toque no botão de novo com internet.</p>
+  </section>
+  <script src="../_js/rif-lista.js"></script>
+  <script>
+  /* Baixar tudo (PRE-site-rif-celular-leve-t0a-2026-09-27): guarda cada arquivo da lista no cache
+     rif-oa-tudo, o mesmo que o sw.js consulta quando falta rede. */
+  (function () {
+    var L = window.RIF_ARQUIVOS || [], msg = document.getElementById('tudoMsg');
+    if (window.RIF_TUDO_MB) { document.getElementById('tudoMb').textContent = 'cerca de ' + RIF_TUDO_MB + ' MB'; }
+    try { var q = localStorage.getItem('rif-tudo'); if (q) { msg.textContent = 'Já guardado neste aparelho em ' + q + '.'; } } catch (e) {}
+    window.rifBaixarTudo = function () {
+      var btn = document.getElementById('tudoBtn');
+      if (!('caches' in window) || location.protocol === 'file:') {
+        msg.textContent = 'Este navegador não guarda o site. Use o Chrome (Android) ou o Safari (iPhone).'; return;
+      }
+      if (navigator.storage && navigator.storage.persist) { navigator.storage.persist(); }
+      btn.disabled = true;
+      var base = new URL('../', location.href), i = 0, feitos = 0, falhas = 0;
+      caches.open('rif-oa-tudo').then(function (c) {
+        function prox() {
+          if (i >= L.length) { return Promise.resolve(); }
+          var u = new URL(L[i++], base).href;
+          return fetch(u + (u.indexOf('?') < 0 ? '?' : '&') + '_sw=' + Date.now(), { cache: 'no-store' })
+            .then(function (r) { if (!r.ok) { throw new Error(r.status); } return c.put(u, r); })
+            .catch(function () { falhas++; })
+            .then(function () {
+              feitos++; msg.textContent = 'Baixando… ' + Math.round(100 * feitos / L.length) + '%';
+              return prox();
+            });
+        }
+        return Promise.all([prox(), prox(), prox(), prox()]);
+      }).then(function () {
+        btn.disabled = false;
+        if (falhas) { msg.textContent = 'Faltaram ' + falhas + ' arquivos. Confira a internet e toque de novo.'; return; }
+        var d = new Date().toLocaleDateString('pt-BR');
+        try { localStorage.setItem('rif-tudo', d); } catch (e) {}
+        msg.textContent = 'Pronto! O site inteiro está guardado neste aparelho e abre sem internet.';
+      }).catch(function () { btn.disabled = false; msg.textContent = 'Não deu para guardar. Toque de novo.'; });
+    };
+  })();
+  </script>
+
   <section id="pendrive">
   <h2>No pen drive, sem internet</h2>
   <p>O pacote tem o site inteiro: trilhas, questões e resoluções. Ele abre com dois cliques, <strong>sem internet e
