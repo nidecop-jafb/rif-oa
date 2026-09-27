@@ -100,15 +100,30 @@ function rifCorpo(it, alt) {
   if (!q) {
     return '<div class="q-fig"><img loading="lazy" src="' + RIF_BASE + '_figuras/' + id + '.png" alt="' + rifEsc(alt) + '"></div>';
   }
-  var h = '', lista = '';
-  q.blocos.forEach(function (b) {
-    if (b[0] === 'li') { lista += '<li>' + rifEsc(b[1]) + '</li>'; return; }
+  if (q.imagem) {                  /* questao que fica como imagem: recorte da prova sem sobras, em WebP */
+    return '<div class="q-fig"><img loading="lazy" src="' + RIF_BASE + '_ilustracoes/' + rifEsc(q.imagem)
+      + '" alt="' + rifEsc(alt || q.alt) + '"></div>';
+  }
+  var h = '', lista = '', marcas = q.marcas || {};
+  function marcado(t, ms) {        /* destaque da prova: sublinhado (u) ou negrito (b) */
+    if (!ms) { return rifEsc(t); }
+    var out = '', ult = 0;
+    ms.slice().sort(function (a, b) { return a[0] - b[0]; }).forEach(function (m) {
+      if (m[0] < ult) { return; }
+      var tag = m[2] === 'b' ? 'strong' : 'u';
+      out += rifEsc(t.slice(ult, m[0])) + '<' + tag + '>' + rifEsc(t.slice(m[0], m[1])) + '</' + tag + '>';
+      ult = m[1];
+    });
+    return out + rifEsc(t.slice(ult));
+  }
+  q.blocos.forEach(function (b, i) {
+    if (b[0] === 'li') { lista += '<li>' + marcado(b[1], marcas[i]) + '</li>'; return; }
     if (lista) { h += '<ul class="q-lista">' + lista + '</ul>'; lista = ''; }
     if (b[0] === 'img') {
-      h += '<figure class="q-ilus"><img loading="lazy" src="' + RIF_BASE + '_ilustracoes/' + rifEsc(q.img)
-        + '" alt="' + rifEsc(q.img_alt) + '"></figure>';
+      h += '<figure class="q-ilus' + (/-[0-9]+[.]webp$/.test(b[2]) ? ' q-graf' : '') + '"><img loading="lazy" src="' + RIF_BASE + '_ilustracoes/'
+        + rifEsc(b[2]) + '" alt="' + rifEsc(b[1]) + '"></figure>';
     } else {
-      h += '<p class="q-' + b[0] + '">' + rifEsc(b[1]) + '</p>';
+      h += '<p class="q-' + b[0] + '">' + marcado(b[1], marcas[i]) + '</p>';
     }
   });
   if (lista) { h += '<ul class="q-lista">' + lista + '</ul>'; }

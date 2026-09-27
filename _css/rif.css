@@ -88,6 +88,7 @@ a.oa .tag { display: block; color: var(--azul-claro); font-size: .9rem; }
 .q-alt-lista { margin: 4px 0 0; }
 .q-ilus { margin: 0 0 12px; text-align: center; }
 .q-ilus img { width: 100%; max-width: 260px; height: auto; }
+.q-graf img { width: auto; max-width: 100%; }
 .q-acoes { display: flex; flex-wrap: wrap; gap: 8px; padding: 12px 14px; }
 .q-acoes button, .q-acoes a { background: var(--caixa); color: var(--texto); border: 1px solid var(--b-555); padding: 8px 12px;
                               font-size: .85rem; cursor: pointer; text-decoration: none; }
