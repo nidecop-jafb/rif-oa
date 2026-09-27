@@ -24,6 +24,25 @@
   window.addEventListener('resize', empilhar);
 })();
 
+/* Indice: #tNN (atalho, casinha de uma trilha, link direto) abre ESSA trilha e fecha as outras. */
+(function () {
+  var trilhas = [].slice.call(document.querySelectorAll('details.trilha'));
+  if (!trilhas.length) { return; }
+  function abrir() {
+    var id = decodeURIComponent(location.hash.slice(1)), alvo = id && document.getElementById(id);
+    if (!alvo || trilhas.indexOf(alvo) < 0) { return; }
+    trilhas.forEach(function (d) { d.open = d === alvo; });
+    alvo.scrollIntoView();
+  }
+  [].slice.call(document.querySelectorAll('.trilha-nav a')).forEach(function (a) {
+    a.addEventListener('click', function () {
+      if (a.getAttribute('href') === location.hash) { setTimeout(abrir, 0); }   /* mesmo hash: sem hashchange */
+    });
+  });
+  window.addEventListener('hashchange', abrir);
+  abrir();
+})();
+
 /* Botao Tema (sol/lua): o tema inicial vem do <head> (escolha guardada ou o do aparelho). */
 (function () {
   var b = document.getElementById('temaBtn'), h = document.documentElement;
