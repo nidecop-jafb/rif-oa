@@ -12,7 +12,7 @@
         return '<label class="alt"><input type="radio" name="r-' + id + '" value="' + l + '"> ' + l + '</label>';
       }).join('');
       return '<article class="q" id="s-' + id + '"><div class="q-cab"><span>Questão ' + (i + 1) + ' de ' + forma().length + '</span></div>' +
-        rifCorpo({id: id}, 'Questão ' + (i + 1)) +
+        rifTextoBase(id) + rifCorpo({id: id}, 'Questão ' + (i + 1)) +
         '<div class="q-acoes">' + alts + '</div><div class="q-res" id="c-' + id + '" hidden></div></article>';
     }).join('');
   }
