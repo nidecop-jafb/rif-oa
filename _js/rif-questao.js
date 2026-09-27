@@ -87,6 +87,13 @@ function rifRegMudou(e) {
 document.addEventListener('change', rifRegMudou);
 document.addEventListener('input', function (e) { if (e.target.getAttribute('data-reg-c') === 'nota') { rifRegMudou(e); } });
 
+/* Texto-base impresso antes de um grupo de questoes (recorte da prova, ver TEXTOS_BASE no gerador). */
+function rifTextoBase(id) {
+  var b = window.RIF_TEXTO_BASE && RIF_TEXTO_BASE[id];
+  if (!b) { return ''; }
+  return '<details class="q-base" open><summary>' + rifEsc(b.rot) + ' (da prova)</summary>'
+    + '<img loading="lazy" src="' + RIF_BASE + '_textos/' + rifEsc(b.img) + '" alt="' + rifEsc(b.rot) + ', recortados da prova do IFMG"></details>';
+}
 function rifCard(it, extra) {
   var r = rifRamo(it), id = rifEsc(it.id), g = rifReg()[it.id], ver = !!(g && g.ver);
   var passos = RIF_PASSOS[r], det = (it.resolucao && it.resolucao.detalhada) || [];
@@ -114,6 +121,7 @@ function rifCard(it, extra) {
     + ' · ' + rifEsc(it.classificacao.area) + '</span>'
     + '<span class="selo ' + r + '">' + (r === 'quant' ? 'Quantitativo' : 'Qualitativo') + '</span>'
     + (extra || '') + '</div>'
+    + rifTextoBase(it.id)
     + '<div class="q-fig"><img loading="lazy" src="' + RIF_BASE + '_figuras/' + id + '.png" alt="' + rifEsc(alt) + '"></div>'
     + '<div class="q-alts"><span>Minha resposta:</span>' + alts + '</div>'
     + '<div class="q-acoes">'

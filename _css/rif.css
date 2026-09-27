@@ -73,6 +73,9 @@ a.oa .tag { display: block; color: var(--azul-claro); font-size: .9rem; }
 .selo.quant { background: var(--azul-esc); }
 .selo.qual { background: var(--verde); }
 .q-fig { background: white; padding: 10px; }
+.q-base { background: white; color: black; padding: 10px 10px 0; border-bottom: 2px dashed var(--t-888); }
+.q-base > summary { cursor: pointer; font-weight: bold; padding-bottom: 8px; }
+.q-base img { display: block; width: 100%; max-width: 640px; height: auto; margin: 0 auto 10px; }
 .q-fig img { display: block; width: 100%; max-width: 640px; height: auto; margin: 0 auto; }
 .q-acoes { display: flex; flex-wrap: wrap; gap: 8px; padding: 12px 14px; }
 .q-acoes button, .q-acoes a { background: var(--caixa); color: var(--texto); border: 1px solid var(--b-555); padding: 8px 12px;
