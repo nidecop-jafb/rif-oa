@@ -43,6 +43,50 @@
   abrir();
 })();
 
+/* A-/A+: 3 tamanhos (normal, g, gg) na base do html; a escolha vem do <head> e fica em rif-letra. */
+(function () {
+  var h = document.documentElement, menos = document.getElementById('letraMenos'),
+      mais = document.getElementById('letraMais'), passos = ['', 'g', 'gg'];
+  if (!menos || !mais) { return; }
+  function atual() { return Math.max(0, passos.indexOf(h.getAttribute('data-letra') || '')); }
+  function mostrar() { var i = atual(); menos.disabled = i === 0; mais.disabled = i === passos.length - 1; }
+  function mudar(d, e) {
+    e.stopPropagation();
+    var i = Math.min(passos.length - 1, Math.max(0, atual() + d));
+    if (passos[i]) { h.setAttribute('data-letra', passos[i]); } else { h.removeAttribute('data-letra'); }
+    try { localStorage.setItem('rif-letra', passos[i]); } catch (err) { /* sem localStorage: vale ate fechar */ }
+    mostrar();
+  }
+  menos.addEventListener('click', function (e) { mudar(-1, e); });
+  mais.addEventListener('click', function (e) { mudar(1, e); });
+  mostrar();
+})();
+
+/* Questao-imagem: um toque abre em tela cheia; um toque (ou Voltar) fecha. */
+(function () {
+  var aberta = null;
+  function fechar(daHistoria) {
+    if (!aberta) { return; }
+    aberta.remove(); aberta = null; document.body.style.overflow = '';
+    if (!daHistoria && history.state && history.state.rifZoom) { history.back(); }
+  }
+  document.addEventListener('click', function (e) {
+    var img = e.target.closest && e.target.closest('.q-fig img, .q-base img, .q-ilus img');
+    if (!img || aberta) { return; }
+    aberta = document.createElement('div');
+    aberta.className = 'zoom-fig';
+    aberta.setAttribute('role', 'dialog');
+    aberta.setAttribute('aria-label', 'Figura ampliada; toque para fechar');
+    aberta.innerHTML = '<button class="zoom-x" type="button" aria-label="Fechar">&times;</button>';
+    var c = img.cloneNode(); c.removeAttribute('loading'); aberta.appendChild(c);
+    aberta.addEventListener('click', function () { fechar(false); });
+    document.body.appendChild(aberta); document.body.style.overflow = 'hidden';
+    try { history.pushState({rifZoom: 1}, ''); } catch (err) { /* sem historia: fecha so pelo toque */ }
+  });
+  window.addEventListener('popstate', function () { fechar(true); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { fechar(false); } });
+})();
+
 /* Botao Tema (sol/lua): o tema inicial vem do <head> (escolha guardada ou o do aparelho). */
 (function () {
   var b = document.getElementById('temaBtn'), h = document.documentElement;
