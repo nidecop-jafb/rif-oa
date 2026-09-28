@@ -56,6 +56,13 @@ details.trilha[open] > summary::before { content: '\2212'; }
 details.trilha > .trilha-corpo { padding: 0 14px 14px; }
 .trilha.breve { padding: 13px 16px 13px calc(16px + 1.4em); color: var(--t-8a); border-style: dashed; }
 .trilha.breve span { color: var(--t-6f); font-size: 0.9375rem; }
+a.trilha-link { display: block; border: 1px solid var(--b-444); margin-bottom: 12px; padding: 14px 16px; text-decoration: none;
+                color: var(--texto); scroll-margin-top: 58px; }
+a.trilha-link:hover { border-color: var(--azul); }
+a.trilha-link .trilha-t { display: block; font-family: 'Courier New', Courier, monospace; font-size: 1.15rem; color: var(--forte); }
+a.trilha-link .trilha-t::after { content: ' \2192'; color: var(--verde-claro); }
+a.trilha-link .trilha-d { display: block; margin-top: 4px; }
+a.trilha-link .tag { display: block; color: var(--azul-claro); font-size: 0.9375rem; }
 a.oa { display: block; padding: 14px 18px; border: 1px solid var(--b-444); color: var(--texto); text-decoration: none; }
 a.oa:hover { border-color: var(--azul); color: var(--azul-claro); }
 a.oa .tag { display: block; color: var(--azul-claro); font-size: 0.9375rem; }
