@@ -3,7 +3,7 @@
  * O nome do cache muda a cada geracao: o activate apaga os anteriores. TUDO e o cache que o botao
  * "Baixar tudo" da aba Instalar enche; ele fica entre as geracoes, e cada pagina aberta com rede
  * regrava a sua copia la (assim o que foi baixado nao envelhece). */
-var CACHE = 'rif-oa-20260928-181252';
+var CACHE = 'rif-oa-20260928-182132';
 var TUDO = 'rif-oa-tudo';
 
 self.addEventListener('install', function (e) {
