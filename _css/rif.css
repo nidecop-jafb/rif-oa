@@ -1,7 +1,7 @@
 /* rif.css — gerado por _site/gerar_site_rif.py (RIF, PRJ-0003). Nao editar a mao.
    Molde: lme-oa. Paleta da marca-rif: azul = quantitativo, verde = qualitativo. */
-:root { color-scheme: dark; --azul: #4A7FC1; --azul-esc: #2E6B8A; --verde: #3E8E5A; --fundo: #0d0d0d; --texto: #e8e8e8; --forte: #fff; --t-ddd: #ddd; --t-c4: #c4c4c4; --t-bbb: #bbb; --t-aaa: #aaa; --t-9a: #9a9a9a; --t-8a: #8a8a8a; --t-888: #888; --t-777: #777; --t-6f: #6f6f6f; --b-666: #666; --b-555: #555; --b-444: #444; --b-333: #333; --b-2a: #2a2a2a; --caixa: #1a1b1f; --caixa2: #151619; --azul-claro: #8FB4E3; --verde-claro: #7CC596; }
-[data-tema="claro"] { color-scheme: light; --fundo: #ffffff; --texto: #1c1c1c; --forte: #000000; --t-ddd: #2a2a2a; --t-c4: #3a3a3a; --t-bbb: #454545; --t-aaa: #505050; --t-9a: #5a5a5a; --t-8a: #5f5f5f; --t-888: #5f5f5f; --t-777: #6a6a6a; --t-6f: #707070; --b-666: #999999; --b-555: #8c8c8c; --b-444: #c8c8c8; --b-333: #dddddd; --b-2a: #e6e6e6; --caixa: #f1f2f5; --caixa2: #f6f7f9; --azul-claro: #2B5E9C; --verde-claro: #2D6E45; }
+:root { color-scheme: dark; --azul: #4A7FC1; --azul-esc: #2E6B8A; --verde: #3E8E5A; --fundo: #0d0d0d; --texto: #e8e8e8; --forte: #fff; --t-ddd: #ddd; --t-c4: #c4c4c4; --t-bbb: #bbb; --t-aaa: #aaa; --t-9a: #9a9a9a; --t-8a: #8a8a8a; --t-888: #888; --t-777: #777; --t-6f: #6f6f6f; --b-666: #666; --b-555: #555; --b-444: #444; --b-333: #333; --b-2a: #2a2a2a; --caixa: #1a1b1f; --caixa2: #151619; --azul-claro: #8FB4E3; --verde-claro: #7CC596; --ambar-claro: #E3B35C; }
+[data-tema="claro"] { color-scheme: light; --fundo: #ffffff; --texto: #1c1c1c; --forte: #000000; --t-ddd: #2a2a2a; --t-c4: #3a3a3a; --t-bbb: #454545; --t-aaa: #505050; --t-9a: #5a5a5a; --t-8a: #5f5f5f; --t-888: #5f5f5f; --t-777: #6a6a6a; --t-6f: #707070; --b-666: #999999; --b-555: #8c8c8c; --b-444: #c8c8c8; --b-333: #dddddd; --b-2a: #e6e6e6; --caixa: #f1f2f5; --caixa2: #f6f7f9; --azul-claro: #2B5E9C; --verde-claro: #2D6E45; --ambar-claro: #8A5A00; }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 /* Letra (PRE-site-rif-letra-legivel-celular-2026-09-27): texto corrido sem serifa, 18 px; Courier so em titulos
    e rotulos; nada abaixo de 15 px (piso_letra); A-/A+ muda a base do html (data-letra, guardado em rif-letra). */
@@ -285,13 +285,15 @@ a.oa .tag { display: block; color: var(--azul-claro); font-size: 0.9375rem; }
             background: var(--caixa); color: var(--azul-claro); border: 1px solid var(--b-555); cursor: pointer; }
 .tema-btn:hover, .inicio-btn:hover { border-color: var(--azul); }
 .tema-btn svg, .inicio-btn svg { width: 20px; height: 20px; display: block; }
-/* cronometro da sessao (PRE-site-rif-cronometro-30min-2026-09-27): so nas 12 trilhas, entre casinha e sol/lua */
+/* cronometro da trilha (PRE-site-rif-cronometro-30min-2026-09-27 + PRE-metodo-rif-aquecimento-estudo-cronometro
+   -2026-09-29): so nas 12 trilhas, entre casinha e sol/lua; A = aquecimento (ambar), E = estudo, P = pausa */
 .crono-btn { min-width: 38px; height: 38px; padding: 0 8px; display: flex; align-items: center; justify-content: center;
              background: var(--caixa); color: var(--azul-claro); border: 1px solid var(--b-555); cursor: pointer; font-size: 0.9375rem;
              font-weight: bold; font-variant-numeric: tabular-nums; letter-spacing: 0; line-height: 1; }
 .crono-btn:hover { border-color: var(--azul); }
 .crono-btn svg { width: 20px; height: 20px; display: block; }
 .crono-btn.rodando { border-color: var(--azul); }
+.crono-btn.aquec { color: var(--ambar-claro); border-color: var(--ambar-claro); }
 .crono-btn.pausa { color: var(--verde-claro); border-color: var(--verde); }
 .crono-btn.congelado { border-style: dashed; }
 dialog.crono-dlg { margin: auto; width: min(92vw, 430px); background: var(--caixa); color: var(--texto);
@@ -299,6 +301,11 @@ dialog.crono-dlg { margin: auto; width: min(92vw, 430px); background: var(--caix
 dialog.crono-dlg::backdrop { background: rgba(0, 0, 0, .6); }
 dialog.crono-dlg h2 { margin: 0 0 10px; font-size: 1.05rem; color: var(--azul-claro); }
 dialog.crono-dlg p { margin: 0 0 16px; }
+dialog.crono-dlg p.meta { font-weight: bold; color: var(--forte); }
+dialog.crono-dlg .crono-audio { margin: 0 0 16px; }
+dialog.crono-dlg .crono-audio p { margin: 0 0 4px; font-weight: bold; color: var(--azul-claro); }
+dialog.crono-dlg .crono-audio audio { width: 100%; margin: 0 0 10px; }
+dialog.crono-dlg { max-height: 92vh; overflow-y: auto; }
 dialog.crono-dlg .acoes { display: flex; flex-wrap: wrap; gap: 10px; justify-content: flex-end; }
 dialog.crono-dlg button { padding: 10px 14px; border: 1px solid var(--b-555); background: var(--caixa2); color: var(--texto);
                           cursor: pointer; font-size: 0.95rem; }
