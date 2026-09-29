@@ -6,7 +6,7 @@
 (function () {
   var b = document.getElementById('cronoBtn');
   if (!b) { return; }
-  var AUDIOS = [];
+  var AUDIOS = [["Versão rápida (1 min 33 s)", "../_md/RIF-CRONO-MD-1min.m4a"], ["Versão curta (5 min 29 s)", "../_md/RIF-CRONO-MD-curto.m4a"]];
   var base = (document.currentScript && document.currentScript.src) || location.href;
   var pag = document.body.getAttribute('data-pagina') || 'trilha';
   var CHAVE = 'rif-crono-' + pag, teste = /[?&]crono=teste\b/.test(location.search);
