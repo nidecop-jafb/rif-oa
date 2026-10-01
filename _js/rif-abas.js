@@ -34,11 +34,6 @@
     trilhas.forEach(function (d) { d.open = d === alvo; });
     alvo.scrollIntoView();
   }
-  [].slice.call(document.querySelectorAll('.trilha-nav a')).forEach(function (a) {
-    a.addEventListener('click', function () {
-      if (a.getAttribute('href') === location.hash) { setTimeout(abrir, 0); }   /* mesmo hash: sem hashchange */
-    });
-  });
   window.addEventListener('hashchange', abrir);
   abrir();
 })();
@@ -103,4 +98,67 @@
     rotulo();
   });
   rotulo();
+})();
+
+/* Aquecimento gradativo (PRE-site-rif-aquecimento-gradativo-estudo-focado-2026-10-01): so nas trilhas.
+   Grupos .grad-g 1-4 = etapas do aquecimento; 5 = Fase 2 (estudo focado). "Pronto, próxima etapa" revela o
+   grupo seguinte; no grupo 4, os passos do exemplo abrem um por vez ("Próximo passo"). O cronometro so mede.
+   Progresso no aparelho (rif-grad-tNN); sem JS, tudo aparece aberto. */
+(function () {
+  function iniciar() {
+    var grupos = [].slice.call(document.querySelectorAll('.grad-g'));
+    if (!grupos.length) { return; }
+    var pasta = location.pathname.replace(/\/index\.html$/, '').replace(/\/$/, '').split('/').pop() || 'trilha';
+    var chave = 'rif-grad-' + pasta, max = grupos.length, st = {};
+    try { st = JSON.parse(localStorage.getItem(chave)) || {}; } catch (e) { st = {}; }
+    var g = Math.min(Math.max(st.g || 1, 1), max);
+    var g4 = document.querySelector('.grad-g[data-g="4"]');
+    var lis = g4 ? [].slice.call(g4.querySelectorAll('.passo1-ex ol li')) : [];
+    var p = Math.min(Math.max(st.p || 1, 1), lis.length || 1);
+    var caixas = g4 ? [].slice.call(g4.querySelectorAll('.passo1-ex')).filter(function (cx) { return cx.querySelector('ol'); }) : [];
+    var viz = document.querySelector('.trilha-viz');
+    var alvo = location.hash && document.getElementById(decodeURIComponent(location.hash.slice(1)));
+    if (alvo) {                                         /* link direto para algo da pagina: abre tudo */
+      grupos.forEach(function (el, i) { if (el.contains(alvo)) { g = Math.max(g, i + 1 > 4 ? max : i + 1); } });
+      if (g >= 4) { p = lis.length || 1; }
+    }
+    function botao(txt, cls) {
+      var b = document.createElement('button');
+      b.type = 'button'; b.className = 'grad-btn' + (cls ? ' ' + cls : ''); b.textContent = txt;
+      b.setAttribute('aria-expanded', 'false');
+      return b;
+    }
+    var bEtapa = botao('Pronto, próxima etapa'), bPasso = botao('Próximo passo', 'passo-btn');
+    function gravar() { try { localStorage.setItem(chave, JSON.stringify({ g: g, p: p })); } catch (e) { /* sem localStorage */ } }
+    function mostrar() {
+      grupos.forEach(function (el) { el.hidden = +el.getAttribute('data-g') > g; });
+      lis.forEach(function (li, i) { li.hidden = g === 4 && i >= p; });
+      caixas.forEach(function (cx) {           /* 2.o exemplo (T11): questao e passos so quando chegar a vez */
+        var vazio = g === 4 && ![].some.call(cx.querySelectorAll('li'), function (li) { return !li.hidden; });
+        cx.hidden = vazio;
+        if (cx.previousElementSibling) { cx.previousElementSibling.hidden = vazio; }
+      });
+      if (viz) { viz.hidden = g < max; }       /* anterior/proxima so na Fase 2: ninguem pula a trilha */
+      if (bPasso.parentNode) { bPasso.parentNode.removeChild(bPasso); }
+      if (bEtapa.parentNode) { bEtapa.parentNode.removeChild(bEtapa); }
+      if (g === 4 && p < lis.length) {
+        var ol = lis[p].parentNode;
+        ol.parentNode.insertBefore(bPasso, ol.nextSibling);
+        return;
+      }
+      if (g < max) { grupos[g - 1].appendChild(bEtapa); }
+    }
+    bEtapa.addEventListener('click', function () {
+      g += 1; if (g === 4) { p = 1; } gravar(); mostrar();
+      var novo = grupos[g - 1];
+      novo.scrollIntoView({ block: 'start', behavior: 'smooth' });
+      var foco = novo.querySelector('.etapa, .fase-t'); if (foco) { foco.setAttribute('tabindex', '-1'); foco.focus({ preventScroll: true }); }
+    });
+    bPasso.addEventListener('click', function () {
+      var li = lis[p]; p += 1; gravar(); mostrar();
+      if (li) { li.setAttribute('tabindex', '-1'); li.focus({ preventScroll: true }); li.scrollIntoView({ block: 'nearest', behavior: 'smooth' }); }
+    });
+    mostrar();
+  }
+  if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', iniciar); } else { iniciar(); }
 })();

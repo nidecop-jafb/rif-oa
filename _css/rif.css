@@ -10,7 +10,7 @@ html[data-letra="gg"] { font-size: 125%; }
 body { background: var(--fundo); color: var(--texto); font-family: Calibri, Carlito, 'Segoe UI', Roboto, Arial, sans-serif;
        font-size: 1.125rem; line-height: 1.7; overflow-wrap: anywhere; }
 h1, h2, h3, .intro-t, .ramo-t, .sessao-t, .selo, .aba-toggle, .aba-painel h3, .aba-painel .aba-sec,
-.aba-painel .aba-cargo, .crono-btn, .letra-btn, details.trilha > summary, .trilha-nav a {
+.aba-painel .aba-cargo, .crono-btn, .letra-btn, details.trilha > summary {
        font-family: 'Courier New', Courier, monospace; }
 p, li { max-width: 68ch; }
 button, input, select, textarea { font-family: inherit; font-size: 1rem; }
@@ -41,12 +41,7 @@ table { width: 100%; border-collapse: collapse; margin: 0 0 20px; font-size: 0.9
 th, td { border: 1px solid var(--b-444); padding: 8px 10px; text-align: left; vertical-align: top; }
 th { color: var(--azul-claro); background: rgba(74,127,193,.10); }
 
-/* trilhas: atalhos + sanfona (molde lme-oa) */
-.trilha-nav { display: flex; flex-wrap: wrap; gap: 6px; padding: 12px 0;
-              margin-bottom: 14px; background: var(--fundo); border-bottom: 1px solid var(--b-333); }
-.trilha-nav a { font-size: 0.9375rem; color: var(--azul-claro); text-decoration: none; border: 1px solid var(--b-444);
-                padding: 5px 10px; }
-.trilha-nav a.breve { color: var(--t-777); }
+/* trilhas: sanfona (molde lme-oa) */
 details.trilha, .trilha.breve { border: 1px solid var(--b-444); margin-bottom: 12px; scroll-margin-top: 58px; }
 details.trilha[open] { border-color: var(--azul); }
 details.trilha > summary { cursor: pointer; list-style: none; padding: 15px 16px; font-size: 1.15rem; color: var(--forte); }
@@ -126,6 +121,23 @@ a.oa .tag { display: block; color: var(--azul-claro); font-size: 0.9375rem; }
 .etapa-n { flex: none; width: 1.7em; height: 1.7em; line-height: 1.7em; border-radius: 50%; text-align: center;
            background: var(--verde); color: white; font-weight: bold; }
 .etapa.fim { font-weight: bold; color: var(--verde-claro); font-size: 1.08rem; }
+/* duas fases + aquecimento gradativo (PRE-site-rif-aquecimento-gradativo-estudo-focado-2026-10-01):
+   ambar = fase A do cronometro, azul = estudo (E) */
+.fase-t { font-family: 'Courier New', Courier, monospace; font-weight: bold; font-size: 1.12rem; text-transform: uppercase;
+          letter-spacing: .03em; color: var(--ambar-claro); border: 2px solid var(--ambar-claro); background: rgba(227,179,92,.12);
+          padding: 10px 14px; margin: 8px 0 14px; max-width: none; }
+.fase-t .fase-n { display: inline-block; background: var(--ambar-claro); color: var(--fundo); padding: 0 8px; margin-right: 6px; }
+.fase-2 > .fase-t { color: var(--azul-claro); border-color: var(--azul); background: rgba(74,127,193,.14); margin-top: 40px; }
+.fase-2 > .fase-t .fase-n { background: var(--azul); color: white; }
+.foco-t { margin-top: 18px; color: var(--azul-claro); font-size: 1.25rem; }
+.foco-calma { font-size: 1.12rem; margin-bottom: 12px; }
+.foco-qtd { font-weight: bold; color: var(--forte); }
+.grad-btn { display: block; margin: 18px 0 8px; padding: 12px 18px; border: 2px solid var(--ambar-claro); background: var(--caixa2);
+            color: var(--ambar-claro); font-weight: bold; cursor: pointer; border-radius: 6px; }
+.grad-g { scroll-margin-top: 64px; }
+.grad-g[hidden], .passo1-ex[hidden], .trilha-viz[hidden] { display: none; }
+.grad-btn.passo-btn { border-color: var(--azul); color: var(--azul-claro); margin: 6px 0 14px; }
+.grad-btn:hover, .grad-btn:focus-visible { background: var(--caixa); }
 
 /* filtros da aba Questoes */
 .filtros { border: 1px solid var(--b-444); background: var(--caixa2); padding: 14px; display: flex; flex-wrap: wrap; gap: 12px;
